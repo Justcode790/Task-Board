@@ -1,9 +1,10 @@
 import React from 'react'
-type Props ={
-    title: string
-    description: string
-    priority: "Low" | "Medium" | "High"
-    dueDate: string
+type Props = {
+  title: string
+  description: string
+  priority: "Low" | "Medium" | "High"
+  dueDate: string
+  status:string
 }
 function Cards(task: Props) {
   return (
@@ -25,6 +26,9 @@ function Cards(task: Props) {
 
         <span className="text-gray-500">
           Due: {task.dueDate}
+        </span>
+        <span className="text-yellow-500">
+         {task.status}
         </span>
       </div>
 
