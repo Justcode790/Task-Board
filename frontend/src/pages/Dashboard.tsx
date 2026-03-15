@@ -115,13 +115,10 @@ function Dashboard() {
     <div className="min-h-screen bg-gray-100">
       <div className=" mx-auto p-8">
         <div className="flex justify-between items-center mb-8">
-
           <h1 className="text-4xl font-bold text-gray-800">
             Task Board
           </h1>
-
           <div className="flex gap-3">
-
             <button className="px-4 py-2 bg-yellow-200 rounded-lg hover:bg-yellow-300 transition" onClick={()=>{navigate("/newtask")}}>
               Create Task
             </button>
@@ -131,16 +128,13 @@ function Dashboard() {
             <button className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition" onClick={()=>{todoTask()}}>
               To Do
             </button>
-
             <button className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition" onClick={()=>{inProgress()}}>
               In Progress
             </button>
-
             <button className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition" onClick={()=>{doneTask()}}>
               Done
             </button>
           </div>
-
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -157,7 +151,6 @@ function Dashboard() {
             />
             </div>
           ))}
-
         </div>
 
         {cardClick && (
