@@ -1,11 +1,10 @@
 import express, { Request, Response } from "express"
 import mongoose from "mongoose"
-import Task from "./models/task"
 import cors from "cors"
-// import dotenv from "dotenv"
+import dotenv from "dotenv"
 import taskRoutes from "./routes/taskRoutes"
 
-// dotenv.config()
+dotenv.config()
 
 const app = express()
 
@@ -14,7 +13,7 @@ app.use(express.json())
 
 const connectDB = async () => {
   try {
-    await mongoose.connect("mongodb://127.0.0.1:27017/taskboard")
+    await mongoose.connect(process.env.MONGO_URI!)
     console.log("MongoDB connected")
   } catch (err: any) {
     console.error(err.message)
@@ -36,6 +35,6 @@ app.get("/", (req: Request, res: Response) => {
   res.send("working")
 })
 
-app.listen(8080, () => {
-  console.log("server is listening")
+app.listen(process.env.PORT || 8080, () => {
+  console.log(`server is listening on port ${process.env.PORT || 8080}`)
 })

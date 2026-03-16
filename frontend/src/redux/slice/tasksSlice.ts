@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
+const API_URL = "http://localhost:8080"
+
 export type Task = {
   _id: string
   title: string
@@ -22,15 +24,13 @@ const initialState: TasksState = {
   error: null,
 }
 
-// GET all tasks from backend
 export const fetchTasks = createAsyncThunk('tasks/fetchAll', async () => {
-  const res = await fetch('http://localhost:8080/api/tasks')
+  const res = await fetch(`${API_URL}/api/tasks`)
   return await res.json()
 })
 
-// POST new task
 export const addTask = createAsyncThunk('tasks/add', async (taskData: Omit<Task, '_id'>) => {
-  const res = await fetch('http://localhost:8080/api/tasks', {
+  const res = await fetch(`${API_URL}/api/tasks`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(taskData),
@@ -38,20 +38,20 @@ export const addTask = createAsyncThunk('tasks/add', async (taskData: Omit<Task,
   return await res.json()
 })
 
-// PUT update task
 export const updateTask = createAsyncThunk('tasks/update', async ({ id, data }: { id: string, data: Partial<Task> }) => {
-  const res = await fetch(`http://localhost:8080/api/tasks/${id}`, {
+  const res = await fetch(`${API_URL}/api/tasks/${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
   })
+  console.log(res)
   return await res.json()
 })
 
-// DELETE task
 export const deleteTask = createAsyncThunk('tasks/delete', async (id: string) => {
-  await fetch(`http://localhost:8080/api/tasks/${id}`, { method: 'DELETE' })
-  return id 
+  const res = await fetch(`${API_URL}/api/tasks/${id}`, { method: 'DELETE' })
+  console.log(res);
+  return id
 })
 
 const tasksSlice = createSlice({
