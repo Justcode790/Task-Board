@@ -8,7 +8,7 @@ type Props = {
 }
 function Cards(task: Props) {
   return (
-    <div className="bg-white shadow-md rounded-xl p-5 border border-gray-200 w-80 hover:shadow-lg transition">
+    <div className="bg-white shadow-md rounded-xl p-5 border border-gray-200 w-80 h-44 hover:shadow-lg transition flex flex-col justify-between">
       
       <div className="mb-4">
         <h2 className="text-lg font-semibold text-gray-800">
@@ -25,7 +25,7 @@ function Cards(task: Props) {
         </span>
 
         <span className="text-gray-500">
-          Due: {task.dueDate}
+          Due: {new Date(task.dueDate).toLocaleDateString()}
         </span>
         <span className="text-yellow-500">
          {task.status}
