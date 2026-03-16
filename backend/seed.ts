@@ -1,6 +1,7 @@
 import mongoose from "mongoose"
 import Task from "./models/task"
-
+import dotenv from "dotenv"
+dotenv.config()
 const tasks = [
   {
     title: "Diwali sale banner design",
@@ -74,8 +75,9 @@ const tasks = [
   }
 ]
 
+
 async function seed() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/taskboard")
+  await mongoose.connect(process.env.MONGO_URI!)
   await Task.deleteMany({})
   await Task.insertMany(tasks)
   console.log("Seeded 10")
