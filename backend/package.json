@@ -1,11 +1,12 @@
 {
   "name": "backend",
   "version": "1.0.0",
+  "type": "module",
   "main": "server.ts",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only server.ts",
-    "build": "tsc",
-    "start": "node dist/server.js"
+    "dev": "tsx watch server.ts",
+    "build": "echo 'no build needed'",
+    "start": "tsx server.ts"
   },
   "dependencies": {
     "cors": "^2.8.6",
@@ -14,9 +15,10 @@
     "mongoose": "^9.3.0"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express": "^5.0.6",
     "@types/node": "^25.5.0",
-    "ts-node-dev": "^2.0.0",
+    "tsx": "^4.19.2",
     "typescript": "^5.9.3"
   }
 }
