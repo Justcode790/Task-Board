@@ -1,4 +1,4 @@
-import React from 'react'
+
 
 type props={
     updateStatus :(status: "to do" | "in progress" | "done") => void

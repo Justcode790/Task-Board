@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
-const API_URL = "http://localhost:8080"
+// const API_URL = "http://localhost:8080"
+const API_URL = "https://task-board-e097.onrender.com"
 
 export type Task = {
   _id: string
@@ -44,13 +45,14 @@ export const updateTask = createAsyncThunk('tasks/update', async ({ id, data }: 
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
   })
-  console.log(res)
+  // console.log(res)
   return await res.json()
 })
 
 export const deleteTask = createAsyncThunk('tasks/delete', async (id: string) => {
-  const res = await fetch(`${API_URL}/api/tasks/${id}`, { method: 'DELETE' })
-  console.log(res);
+  await fetch(`${API_URL}/api/tasks/${id}`, { method: 'DELETE' })
+  // const res = await fetch(`${API_URL}/api/tasks/${id}`, { method: 'DELETE' })
+  // console.log(res);
   return id
 })
 

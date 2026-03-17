@@ -6,7 +6,7 @@ const router = express.Router()
 
 router.get("/tasks", async (req: Request, res: Response) => {
   const tasks = await Task.find()
-  console.log(tasks)
+  // console.log(tasks)
   res.json(tasks)
 })
 

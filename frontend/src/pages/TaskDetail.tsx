@@ -1,6 +1,6 @@
 import { useState } from "react"
 import ShowMenus from "../components/ShowMenus"
-import { useNavigate } from "react-router-dom"
+// import { useNavigate } from "react-router-dom"
 import { useAppDispatch } from "../redux/hooks"
 import { deleteTask, updateTask } from '../redux/slice/tasksSlice'
 
@@ -20,7 +20,7 @@ function TaskDetail(e: Props) {
   const [showMenu, setShowMenu] = useState(false);
   const [status, setStatus] = useState(e.status);
   const dispatch = useAppDispatch()
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   function updateStatus(newStatus: "to do" | "in progress" | "done") {
     dispatch(updateTask({ id: e.id, data: { status: newStatus } }))
     setStatus(newStatus)
